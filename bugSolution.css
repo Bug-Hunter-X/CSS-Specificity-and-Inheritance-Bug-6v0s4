@@ -1,0 +1,25 @@
+The solution involves understanding CSS specificity and avoiding the overreliance of `!important`:
+
+```css
+.parent {
+  color: blue;
+}
+
+.child {
+  color: red;
+}
+
+.grandchild {
+  color: green;
+}
+
+.parent .child .grandchild {
+  color: purple; /*This is a solution. More specific selector wins*/
+}
+
+/*Instead of using !important, adjust specificity in the stylesheet to ensure correct precedence.
+   In this case, more specific selector overrides the less specific selector. */
+
+```
+
+By clearly defining the styles based on specificity, without the need for `!important`, we create a maintainable and predictable CSS structure.  Adjusting the specificity of the selectors ensures that the correct styles are applied in the expected order.
