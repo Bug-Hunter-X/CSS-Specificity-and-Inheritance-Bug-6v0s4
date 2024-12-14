@@ -1,0 +1,24 @@
+The following CSS code snippet demonstrates an uncommon error related to specificity and inheritance:
+
+```css
+.parent {
+  color: blue;
+}
+
+.child {
+  color: red !important;
+}
+
+.grandchild {
+  color: green;
+}
+
+.parent .child .grandchild {
+  color: purple;
+}
+
+```
+
+In this scenario, the `.grandchild` element inherits the `color: blue` from its ancestor `.parent`.  The `!important` declaration on `.child` overrides this, setting the color to red for the `.child` element itself. However, the highly specific selector `.parent .child .grandchild` sets the color to purple. The unexpected behavior is that the `color: purple` declaration only applies to `.grandchild` if it's a direct descendant of both `.parent` and `.child` elements.
+
+The unexpected behavior might stem from a misunderstanding of how !important works alongside inheritance and specificity.  The `!important` flag helps, but if you don't fully understand the specificities, you can unintentionally create difficult-to-debug issues.
